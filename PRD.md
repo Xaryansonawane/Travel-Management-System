@@ -7,7 +7,7 @@
 
 The **Travel & Tourism Management System (TMS) REST API** is an enterprise-grade, backend-only travel and reservation platform built on **Java 21, Spring Boot 3.3.4, Spring Data JPA, Hibernate, MySQL, Lombok, Jakarta Bean Validation, and OpenAPI 3.0 (Swagger UI)**.
 
-The system provides a unified, headless service architecture that coordinates user accounts, destination catalogs, travel package itineraries, multi-criteria search and filtering algorithms, transactional seat allocations, reservation lifecycle tracking, and financial payment settlement. All user interactions are mediated strictly via RESTful HTTP interfaces producing and consuming `application/json`, with interactive exploration and developer testing enabled via Springdoc OpenAPI (Swagger UI) at `http://localhost:8080/swagger-ui/index.html`.
+The system provides a unified, headless service architecture that coordinates user accounts, destination catalogs, travel package itineraries, multi-criteria search and filtering algorithms, transactional seat allocations, reservation lifecycle tracking, and financial payment settlement. All user interactions are mediated strictly via RESTful HTTP interfaces producing and consuming `application/json`, with interactive exploration and developer testing enabled via Springdoc OpenAPI (Swagger UI) at `http://localhost:8081/swagger-ui/index.html`.
 
 The primary goal of this platform is to establish transactional consistency, eliminate overbooking and seat-overselling anomalies, enforce inventory re-allocation invariants upon cancellations, provide rich multi-parameter search/filter capabilities, and offer an extensible API foundation for web booking portals, mobile travel apps, and third-party tourism aggregators.
 
@@ -185,7 +185,7 @@ export interface Booking {
 
 ### 5. API Interfaces
 
-The system operates on default server port `8080` with base path `/`.
+The system operates on default server port `8081` with base path `/`.
 
 #### 5.1 User Management API (`/api/users/**`)
 | Endpoint | Method | Status | Request Body | Description |
@@ -235,7 +235,7 @@ The system operates on default server port `8080` with base path `/`.
 ##### Booking Creation Request:
 ```http
 POST /api/bookings HTTP/1.1
-Host: localhost:8080
+Host: localhost:8081
 Content-Type: application/json
 
 {
@@ -288,7 +288,7 @@ Content-Type: application/json
 
 > **Backend-Only Architecture Note:** This platform operates strictly as a Headless RESTful API. The primary operational and developer user interface is the interactive OpenAPI / Swagger UI console.
 
-#### 6.1 Swagger UI Console (`http://localhost:8080/swagger-ui/index.html`)
+#### 6.1 Swagger UI Console (`http://localhost:8081/swagger-ui/index.html`)
 The interactive portal organizes endpoints into 4 primary modules:
 1. **User Management**: Registration, profile queries, updates, and user listing.
 2. **Destination Management**: Destination registry, geographic exploration, and search.

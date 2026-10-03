@@ -15,7 +15,7 @@ The **Travel & Tourism Management System** backend enables customers to browse d
 * **Dynamic Search & Filtering**: Multi-parameter search queries (destination, price brackets, duration ranges, status, and free-text search).
 * **Comprehensive Validation**: Declarative Jakarta validation annotations on all incoming payloads with friendly error messages.
 * **Global Error Handling**: Standardized error responses across all failure modes via `@RestControllerAdvice`.
-* **Interactive API Documentation**: Swagger UI / OpenAPI 3.0 interactive documentation at `http://localhost:8080/swagger-ui/index.html`.
+* **Interactive API Documentation**: Swagger UI / OpenAPI 3.0 interactive documentation at `http://localhost:8081/swagger-ui/index.html`.
 * **Postman Collection Included**: Complete Postman v2.1 collection file ready to import and test.
 * **Dual Persistence Modes**: Production-ready MySQL datasource with automatic schema management + in-memory H2 mode for deterministic test execution.
 
@@ -186,7 +186,7 @@ erDiagram
 
 ## 📋 API Endpoints Reference
 
-Base URL: `http://localhost:8080`
+Base URL: `http://localhost:8081`
 
 ### 1. User Management
 | Method | Endpoint | Description | Status Code |
@@ -248,7 +248,7 @@ spring:
 ### Environment Variables
 | Variable | Description | Default Value |
 | :--- | :--- | :--- |
-| `PORT` | HTTP server listening port | `8080` |
+| `PORT` | HTTP server listening port | `8081` |
 | `DB_HOST` | MySQL hostname | `localhost` |
 | `DB_PORT` | MySQL port | `3306` |
 | `DB_NAME` | Database schema name | `travel_tourism_db` |
@@ -295,8 +295,8 @@ java -jar target/travel-management-system-1.0.0.jar
 ## 📖 Swagger / OpenAPI Documentation
 
 Once the application is running, open your web browser:
-* **Interactive Swagger UI**: [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
-* **Raw OpenAPI JSON Spec**: [http://localhost:8080/v3/api-docs](http://localhost:8080/v3/api-docs)
+* **Interactive Swagger UI**: [http://localhost:8081/swagger-ui/index.html](http://localhost:8081/swagger-ui/index.html)
+* **Raw OpenAPI JSON Spec**: [http://localhost:8081/v3/api-docs](http://localhost:8081/v3/api-docs)
 
 The Swagger UI allows real-time interactive testing of all endpoints with schema models and sample payloads.
 
@@ -311,7 +311,7 @@ A complete Postman collection is included in the project root:
 1. Open Postman.
 2. Click **Import** in the top left.
 3. Select `Travel_Management_System_API.postman_collection.json`.
-4. The collection is pre-configured with the `{{baseUrl}}` variable set to `http://localhost:8080`.
+4. The collection is pre-configured with the `{{baseUrl}}` variable set to `http://localhost:8081`.
 5. Execute requests across the 5 categorized folders:
    * `1. User Management`
    * `2. Destination Management`
@@ -347,7 +347,7 @@ Output:
 
 ### 1. Register User
 ```bash
-curl -X POST "http://localhost:8080/api/users" \
+curl -X POST "http://localhost:8081/api/users" \
   -H "Content-Type: application/json" \
   -d '{
     "name": "Sarah Connor",
@@ -377,7 +377,7 @@ curl -X POST "http://localhost:8080/api/users" \
 
 ### 2. Multi-Criteria Package Filter
 ```bash
-curl -X GET "http://localhost:8080/api/packages/filter?minPrice=500&maxPrice=2000&minDuration=5&maxDuration=8&status=ACTIVE&keyword=Alps"
+curl -X GET "http://localhost:8081/api/packages/filter?minPrice=500&maxPrice=2000&minDuration=5&maxDuration=8&status=ACTIVE&keyword=Alps"
 ```
 **Response (200 OK):**
 ```json
@@ -412,7 +412,7 @@ curl -X GET "http://localhost:8080/api/packages/filter?minPrice=500&maxPrice=200
 
 ### 3. Create Booking
 ```bash
-curl -X POST "http://localhost:8080/api/bookings" \
+curl -X POST "http://localhost:8081/api/bookings" \
   -H "Content-Type: application/json" \
   -d '{
     "userId": 2,
@@ -445,7 +445,7 @@ curl -X POST "http://localhost:8080/api/bookings" \
 
 ### 4. Cancel Booking (Restores Inventory)
 ```bash
-curl -X DELETE "http://localhost:8080/api/bookings/3"
+curl -X DELETE "http://localhost:8081/api/bookings/3"
 ```
 **Response (200 OK):**
 ```json
