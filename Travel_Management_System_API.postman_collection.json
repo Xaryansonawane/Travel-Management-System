@@ -1,0 +1,520 @@
+{
+  "info": {
+    "_postman_id": "7a35e4d2-bc51-4e89-a29d-travel-mgmt-2026",
+    "name": "Travel & Tourism Management System API",
+    "description": "Production-ready Postman collection for the Travel & Tourism Management System RESTful API built with Java 21, Spring Boot 3.3.4, Spring Data JPA, Hibernate, MySQL, and OpenAPI/Swagger.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. User Management",
+      "item": [
+        {
+          "name": "Register User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"David Miller\",\n  \"email\": \"david.miller@example.com\",\n  \"phone\": \"+1-555-0144\",\n  \"password\": \"SecretPass@2026\",\n  \"role\": \"USER\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/users",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users"]
+            },
+            "description": "Registers a new user account in the system."
+          }
+        },
+        {
+          "name": "Get User by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users", "1"]
+            },
+            "description": "Retrieves user profile details by ID."
+          }
+        },
+        {
+          "name": "Get All Users (Paginated)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/users?page=0&size=10&sortBy=id&sortDir=asc",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users"],
+              "query": [
+                { "key": "page", "value": "0" },
+                { "key": "size", "value": "10" },
+                { "key": "sortBy", "value": "id" },
+                { "key": "sortDir", "value": "asc" }
+              ]
+            },
+            "description": "Retrieves paginated list of all users."
+          }
+        },
+        {
+          "name": "Update User",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"David M. Miller\",\n  \"email\": \"david.miller@example.com\",\n  \"phone\": \"+1-555-9988\",\n  \"password\": \"UpdatedPass@2026\",\n  \"role\": \"USER\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/users/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users", "1"]
+            },
+            "description": "Updates an existing user profile."
+          }
+        },
+        {
+          "name": "Delete User",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/3",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users", "3"]
+            },
+            "description": "Deletes a user by primary ID."
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Destination Management",
+      "item": [
+        {
+          "name": "Add Destination",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Santorini\",\n  \"country\": \"Greece\",\n  \"state\": \"South Aegean\",\n  \"description\": \"Iconic Aegean Sea island celebrated for whitewashed cubiform houses, caldera cliff sunsets, and azure waters.\",\n  \"bestTimeToVisit\": \"Late April to early November\",\n  \"imageUrl\": \"https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/destinations",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "destinations"]
+            },
+            "description": "Adds a new travel destination."
+          }
+        },
+        {
+          "name": "Get Destination by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/destinations/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "destinations", "1"]
+            },
+            "description": "Retrieves destination details by ID."
+          }
+        },
+        {
+          "name": "Get All Destinations (Paginated)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/destinations?page=0&size=10&sortBy=name&sortDir=asc",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "destinations"],
+              "query": [
+                { "key": "page", "value": "0" },
+                { "key": "size", "value": "10" },
+                { "key": "sortBy", "value": "name" },
+                { "key": "sortDir", "value": "asc" }
+              ]
+            },
+            "description": "Lists all destinations with pagination."
+          }
+        },
+        {
+          "name": "Update Destination",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Bali Paradise\",\n  \"country\": \"Indonesia\",\n  \"state\": \"Bali Province\",\n  \"description\": \"Updated description of pristine beaches and coral temples.\",\n  \"bestTimeToVisit\": \"May to September\",\n  \"imageUrl\": \"https://images.unsplash.com/photo-1537996194471-e657df975ab4\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/destinations/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "destinations", "1"]
+            },
+            "description": "Updates destination metadata."
+          }
+        },
+        {
+          "name": "Search Destinations",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/destinations/search?query=France&page=0&size=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "destinations", "search"],
+              "query": [
+                { "key": "query", "value": "France" },
+                { "key": "page", "value": "0" },
+                { "key": "size", "value": "10" }
+              ]
+            },
+            "description": "Searches destinations by country, state, or name keyword."
+          }
+        },
+        {
+          "name": "Delete Destination",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/destinations/5",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "destinations", "5"]
+            },
+            "description": "Deletes destination and cascaded relations."
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. Travel Package Management",
+      "item": [
+        {
+          "name": "Create Package",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"packageName\": \"Greek Islands Cruise & Sunset Trail\",\n  \"destinationId\": 1,\n  \"description\": \"Sail through Aegean waters, explore ancient ruins, and witness unforgettable cliffside sunsets.\",\n  \"duration\": 7,\n  \"price\": 1199.00,\n  \"availableSeats\": 18,\n  \"startDate\": \"2026-11-15\",\n  \"endDate\": \"2026-11-22\",\n  \"inclusions\": \"Luxury Catamaran, 4-Star Hotels, Daily Breakfast, Island Transfers\",\n  \"exclusions\": \"International Flights, Personal Souvenirs\",\n  \"status\": \"ACTIVE\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/packages",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "packages"]
+            },
+            "description": "Creates a new travel package."
+          }
+        },
+        {
+          "name": "Get Package by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/packages/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "packages", "1"]
+            },
+            "description": "Retrieves package details by ID."
+          }
+        },
+        {
+          "name": "Get All Packages (Paginated)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/packages?page=0&size=10&sortBy=id&sortDir=asc",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "packages"],
+              "query": [
+                { "key": "page", "value": "0" },
+                { "key": "size", "value": "10" },
+                { "key": "sortBy", "value": "id" },
+                { "key": "sortDir", "value": "asc" }
+              ]
+            },
+            "description": "Retrieves all travel packages."
+          }
+        },
+        {
+          "name": "Update Package",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"packageName\": \"Exotic Bali 7-Day Luxury Adventure\",\n  \"destinationId\": 1,\n  \"description\": \"Upgraded package featuring 5-star beachfront villa and private guide.\",\n  \"duration\": 7,\n  \"price\": 999.99,\n  \"availableSeats\": 25,\n  \"startDate\": \"2026-11-01\",\n  \"endDate\": \"2026-11-08\",\n  \"inclusions\": \"5-Star Villa, All Meals, Private Guide, Airport Transfers\",\n  \"exclusions\": \"International Flights\",\n  \"status\": \"ACTIVE\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/packages/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "packages", "1"]
+            },
+            "description": "Updates package details, pricing, and seats."
+          }
+        },
+        {
+          "name": "Delete Package",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/packages/4",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "packages", "4"]
+            },
+            "description": "Deletes a travel package by ID."
+          }
+        },
+        {
+          "name": "Get Packages by Destination",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/packages/destination/1?page=0&size=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "packages", "destination", "1"],
+              "query": [
+                { "key": "page", "value": "0" },
+                { "key": "size", "value": "10" }
+              ]
+            },
+            "description": "Retrieves all packages associated with a destination."
+          }
+        },
+        {
+          "name": "Find Available Packages (Seats > 0)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/packages/available?page=0&size=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "packages", "available"],
+              "query": [
+                { "key": "page", "value": "0" },
+                { "key": "size", "value": "10" }
+              ]
+            },
+            "description": "Finds active packages with available seats."
+          }
+        },
+        {
+          "name": "Filter Packages (Multi-Criteria)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/packages/filter?minPrice=500&maxPrice=2000&minDuration=5&maxDuration=8&status=ACTIVE&keyword=Alps&page=0&size=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "packages", "filter"],
+              "query": [
+                { "key": "minPrice", "value": "500" },
+                { "key": "maxPrice", "value": "2000" },
+                { "key": "minDuration", "value": "5" },
+                { "key": "maxDuration", "value": "8" },
+                { "key": "status", "value": "ACTIVE" },
+                { "key": "keyword", "value": "Alps" },
+                { "key": "page", "value": "0" },
+                { "key": "size", "value": "10" }
+              ]
+            },
+            "description": "Multi-criteria filter by price range, duration range, status, and keyword."
+          }
+        }
+      ]
+    },
+    {
+      "name": "4. Booking Management",
+      "item": [
+        {
+          "name": "Create Booking",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": 2,\n  \"travelPackageId\": 1,\n  \"numberOfTravelers\": 2\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/bookings",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "bookings"]
+            },
+            "description": "Books seats for a travel package, deducts available seats, and computes total cost."
+          }
+        },
+        {
+          "name": "Get Booking by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/bookings/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "bookings", "1"]
+            },
+            "description": "Retrieves booking details by primary ID."
+          }
+        },
+        {
+          "name": "Get All Bookings (Paginated)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/bookings?page=0&size=10&sortBy=id&sortDir=desc",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "bookings"],
+              "query": [
+                { "key": "page", "value": "0" },
+                { "key": "size", "value": "10" },
+                { "key": "sortBy", "value": "id" },
+                { "key": "sortDir", "value": "desc" }
+              ]
+            },
+            "description": "Lists all bookings in the system."
+          }
+        },
+        {
+          "name": "Get Bookings by User",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/bookings/user/2?page=0&size=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "bookings", "user", "2"],
+              "query": [
+                { "key": "page", "value": "0" },
+                { "key": "size", "value": "10" }
+              ]
+            },
+            "description": "Retrieves all bookings made by a user."
+          }
+        },
+        {
+          "name": "Get Bookings by Package",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/bookings/package/1?page=0&size=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "bookings", "package", "1"],
+              "query": [
+                { "key": "page", "value": "0" },
+                { "key": "size", "value": "10" }
+              ]
+            },
+            "description": "Retrieves all bookings booked under a package."
+          }
+        },
+        {
+          "name": "Update Booking (Status / Payment / Travelers)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"bookingStatus\": \"CONFIRMED\",\n  \"paymentStatus\": \"PAID\",\n  \"numberOfTravelers\": 3\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/bookings/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "bookings", "1"]
+            },
+            "description": "Updates booking status, payment, or travelers."
+          }
+        },
+        {
+          "name": "Cancel Booking (Restores Seats)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/bookings/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "bookings", "1"]
+            },
+            "description": "Cancels booking, releases seats back to package, and issues refund if paid."
+          }
+        }
+      ]
+    },
+    {
+      "name": "5. Actuator Health",
+      "item": [
+        {
+          "name": "Actuator Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/actuator/health",
+              "host": ["{{baseUrl}}"],
+              "path": ["actuator", "health"]
+            },
+            "description": "Returns operational uptime and health indicators."
+          }
+        }
+      ]
+    }
+  ]
+}
